@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": "chicken",
+      "name": "Chicken",
+      "count": 68
+    },
+    {
+      "id": "beef",
+      "name": "Beef",
+      "count": 85
+    },
+    {
+      "id": "pork",
+      "name": "Pork",
+      "count": 84
+    },
+    {
+      "id": "turkey",
+      "name": "Turkey",
+      "count": 80
+    },
+    {
+      "id": "seafood",
+      "name": "Seafood",
+      "count": 75
+    },
+    {
+      "id": "vegetarian",
+      "name": "Vegetarian",
+      "count": 83
+    }
+  ]
+}
