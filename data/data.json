@@ -3,32 +3,53 @@
     {
       "id": "chicken",
       "name": "Chicken",
-      "count": 68
+      "count": 68,
+      "recipes": [
+        {
+          "id": "pad-thai",
+          "name": "10 Minute Chicken Pad Thai",
+          "time": "25 Min",
+          "servings": 4,
+          "calories": 415
+        },
+        {
+          "id": "air-fryer",
+          "name": "Air Fryer Chicken Breast",
+          "time": "20 Min",
+          "servings": 2,
+          "calories": 320
+        }
+      ]
     },
     {
       "id": "beef",
       "name": "Beef",
-      "count": 85
+      "count": 85,
+      "recipes": []
     },
     {
       "id": "pork",
       "name": "Pork",
-      "count": 84
+      "count": 84,
+      "recipes": []
     },
     {
       "id": "turkey",
       "name": "Turkey",
-      "count": 80
+      "count": 80,
+      "recipes": []
     },
     {
       "id": "seafood",
       "name": "Seafood",
-      "count": 75
+      "count": 75,
+      "recipes": []
     },
     {
       "id": "vegetarian",
       "name": "Vegetarian",
-      "count": 83
+      "count": 83,
+      "recipes": []
     }
   ]
 }
