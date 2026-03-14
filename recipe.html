@@ -7,41 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with title and support button -->
     <header>
         <h1 id="recipe-title">Recipe</h1>
-        <button id="supportBtn" class="support-button">Support Us ☰</button>
     </header>
 
-    <!-- Main content: recipe details -->
     <main>
-        <!-- Meta info (time, servings, calories) -->
         <div id="recipe-meta" class="recipe-meta"></div>
-
-        <!-- Ingredients -->
         <h2>Ingredients</h2>
         <div id="ingredients"></div>
-
-        <!-- Instructions -->
         <h2>Instructions</h2>
         <div id="instructions"></div>
     </main>
 
-    <!-- Sliding panel -->
-    <div id="supportPanel" class="support-panel">
-        <button id="closePanel" class="close-btn">✖</button>
+    <footer>
         <ul class="support-list">
-            <li>Contact Us</li>
-            <li>★ Rate Us</li>
-            <li>▼ Share App</li>
-            <li>● More Apps</li>
-            <li>★ Privacy Policy</li>
-            <li>Exit</li>
+            <li id="contact">Contact Us</li>
+            <li id="rate">★ Rate Us</li>
+            <li id="share">▼ Share App</li>
+            <li id="more">● More Apps</li>
+            <li id="privacy">★ Privacy Policy</li>
+            <li id="exit">Exit</li>
         </ul>
-    </div>
-
-    <!-- Overlay -->
-    <div id="overlay" class="overlay"></div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
