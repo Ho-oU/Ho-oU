@@ -1,4 +1,4 @@
-// ==================== SLIDING PANEL CODE (works on all pages) ====================
+// ==================== SLIDING PANEL CODE ====================
 const supportBtn = document.getElementById('supportBtn');
 const supportPanel = document.getElementById('supportPanel');
 const closeBtn = document.getElementById('closePanel');
@@ -25,7 +25,7 @@ if (overlay) {
     });
 }
 
-// ==================== HOME PAGE (index.html) ====================
+// ==================== HOME PAGE ====================
 async function loadCategories() {
     try {
         const response = await fetch('data/data.json');
@@ -37,7 +37,6 @@ async function loadCategories() {
         data.categories.forEach(cat => {
             const card = document.createElement('div');
             card.className = 'category-card';
-            // Make the card clickable – go to category.html with the category id
             card.onclick = function() {
                 window.location.href = `category.html?cat=${cat.id}`;
             };
@@ -52,9 +51,8 @@ async function loadCategories() {
     }
 }
 
-// ==================== CATEGORY PAGE (category.html) ====================
+// ==================== CATEGORY PAGE ====================
 async function loadCategoryRecipes() {
-    // Get category id from URL (e.g., ?cat=chicken)
     const urlParams = new URLSearchParams(window.location.search);
     const catId = urlParams.get('cat');
     if (!catId) {
@@ -71,24 +69,24 @@ async function loadCategoryRecipes() {
             return;
         }
 
-        // Set the page title
         document.getElementById('category-title').textContent = `${category.name} Recipes`;
 
         const container = document.getElementById('recipe-list');
         if (!container) return;
 
-        // If no recipes yet
         if (!category.recipes || category.recipes.length === 0) {
             container.innerHTML = '<p>No recipes yet.</p>';
             return;
         }
 
-        // Create recipe cards
         container.innerHTML = '';
         category.recipes.forEach(recipe => {
             const card = document.createElement('div');
             card.className = 'recipe-item';
-            // We'll make it clickable later to go to recipe detail
+            // Make recipe clickable – go to recipe.html with category and recipe id
+            card.onclick = function() {
+                window.location.href = `recipe.html?cat=${catId}&recipe=${recipe.id}`;
+            };
             card.innerHTML = `
                 <h3>${recipe.name}</h3>
                 <p>${recipe.time} | ${recipe.servings} serves | ${recipe.calories} cal</p>
@@ -100,12 +98,74 @@ async function loadCategoryRecipes() {
     }
 }
 
-// ==================== RUN THE RIGHT FUNCTION BASED ON PAGE ====================
-// Check which page we're on by looking at the filename
-if (window.location.pathname.includes('category.html')) {
-    // We are on category.html
+// ==================== RECIPE DETAIL PAGE ====================
+async function loadRecipe() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const catId = urlParams.get('cat');
+    const recipeId = urlParams.get('recipe');
+    if (!catId || !recipeId) {
+        document.getElementById('recipe-title').textContent = 'Recipe not found';
+        return;
+    }
+
+    try {
+        const response = await fetch('data/data.json');
+        const data = await response.json();
+        const category = data.categories.find(c => c.id === catId);
+        if (!category) {
+            document.getElementById('recipe-title').textContent = 'Recipe not found';
+            return;
+        }
+        const recipe = category.recipes.find(r => r.id === recipeId);
+        if (!recipe) {
+            document.getElementById('recipe-title').textContent = 'Recipe not found';
+            return;
+        }
+
+        // Set page title
+        document.getElementById('recipe-title').textContent = recipe.name;
+
+        // Set meta info
+        const metaDiv = document.getElementById('recipe-meta');
+        metaDiv.innerHTML = `
+            <span>⏱️ ${recipe.time}</span>
+            <span>🍽️ ${recipe.servings} serves</span>
+            <span>🔥 ${recipe.calories} cal</span>
+        `;
+
+        // Build ingredients HTML (with sections)
+        let ingredientsHtml = '';
+        if (recipe.ingredients && recipe.ingredients.length > 0) {
+            recipe.ingredients.forEach(section => {
+                ingredientsHtml += `<div class="ingredient-section">`;
+                if (section.section) {
+                    ingredientsHtml += `<h3>${section.section}</h3>`;
+                }
+                ingredientsHtml += `<ul>`;
+                section.items.forEach(item => {
+                    ingredientsHtml += `<li>${item}</li>`;
+                });
+                ingredientsHtml += `</ul></div>`;
+            });
+        } else {
+            ingredientsHtml = '<p>No ingredients listed.</p>';
+        }
+        document.getElementById('ingredients').innerHTML = ingredientsHtml;
+
+        // Instructions (convert newlines to <br> for display)
+        const instructionsText = recipe.instructions || 'No instructions provided.';
+        document.getElementById('instructions').innerHTML = `<div class="instructions">${instructionsText.replace(/\n/g, '<br>')}</div>`;
+
+    } catch (error) {
+        console.error('Error loading recipe:', error);
+    }
+}
+
+// ==================== PAGE DETECTION ====================
+if (window.location.pathname.includes('recipe.html')) {
+    loadRecipe();
+} else if (window.location.pathname.includes('category.html')) {
     loadCategoryRecipes();
 } else {
-    // Assume we are on index.html (or any other page)
     loadCategories();
 }
