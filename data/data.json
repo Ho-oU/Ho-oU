@@ -16,7 +16,7 @@
               "section": "Sauce",
               "items": [
                 "2 tablespoons fish sauce",
-                "2 tablespoons lime juice (from 1 lime)",
+                "2 tablespoons lime juice",
                 "1 tablespoon brown sugar",
                 "1 tablespoon soy sauce"
               ]
@@ -33,7 +33,7 @@
               ]
             }
           ],
-          "instructions": "1. Cook noodles according to package directions. Drain and set aside.\n2. In a small bowl, mix fish sauce, lime juice, brown sugar, and soy sauce.\n3. Heat oil in a wok or large pan. Add chicken and stir-fry until cooked through.\n4. Push chicken to one side, add eggs and scramble.\n5. Add noodles and sauce mixture, toss everything together.\n6. Remove from heat, stir in bean sprouts and green onions.\n7. Serve topped with crushed peanuts."
+          "instructions": "1. Cook noodles according to package directions. Drain.\n2. Mix fish sauce, lime juice, sugar, soy sauce in a bowl.\n3. Stir-fry chicken until cooked. Push aside, scramble eggs.\n4. Add noodles and sauce, toss.\n5. Remove from heat, add bean sprouts and onions.\n6. Serve with crushed peanuts."
         },
         {
           "id": "air-fryer",
@@ -49,11 +49,11 @@
                 "1 tbsp olive oil",
                 "1 tsp paprika",
                 "½ tsp garlic powder",
-                "Salt and pepper to taste"
+                "Salt and pepper"
               ]
             }
           ],
-          "instructions": "1. Preheat air fryer to 375°F (190°C).\n2. Rub chicken breasts with olive oil and all spices.\n3. Place in air fryer basket in a single layer.\n4. Cook for 12-15 minutes, flipping halfway, until internal temperature reaches 165°F (74°C).\n5. Let rest 5 minutes before serving."
+          "instructions": "1. Preheat air fryer to 375°F.\n2. Rub chicken with oil and spices.\n3. Air fry 12-15 min, flipping halfway.\n4. Rest 5 min before serving."
         }
       ]
     },
