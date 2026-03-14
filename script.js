@@ -1,31 +1,4 @@
-// ==================== SLIDING PANEL CODE ====================
-const supportBtn = document.getElementById('supportBtn');
-const supportPanel = document.getElementById('supportPanel');
-const closeBtn = document.getElementById('closePanel');
-const overlay = document.getElementById('overlay');
-
-if (supportBtn) {
-    supportBtn.addEventListener('click', function() {
-        supportPanel.classList.add('open');
-        overlay.classList.add('show');
-    });
-}
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-        supportPanel.classList.remove('open');
-        overlay.classList.remove('show');
-    });
-}
-
-if (overlay) {
-    overlay.addEventListener('click', function() {
-        supportPanel.classList.remove('open');
-        overlay.classList.remove('show');
-    });
-}
-
-// ==================== HOME PAGE ====================
+// ==================== HOME PAGE CATEGORY GRID ====================
 async function loadCategories() {
     try {
         const response = await fetch('data/data.json');
@@ -37,7 +10,7 @@ async function loadCategories() {
         data.categories.forEach(cat => {
             const card = document.createElement('div');
             card.className = 'category-card';
-            card.onclick = function() {
+            card.onclick = () => {
                 window.location.href = `category.html?cat=${cat.id}`;
             };
             card.innerHTML = `
@@ -83,8 +56,7 @@ async function loadCategoryRecipes() {
         category.recipes.forEach(recipe => {
             const card = document.createElement('div');
             card.className = 'recipe-item';
-            // Make recipe clickable – go to recipe.html with category and recipe id
-            card.onclick = function() {
+            card.onclick = () => {
                 window.location.href = `recipe.html?cat=${catId}&recipe=${recipe.id}`;
             };
             card.innerHTML = `
@@ -122,10 +94,8 @@ async function loadRecipe() {
             return;
         }
 
-        // Set page title
         document.getElementById('recipe-title').textContent = recipe.name;
 
-        // Set meta info
         const metaDiv = document.getElementById('recipe-meta');
         metaDiv.innerHTML = `
             <span>⏱️ ${recipe.time}</span>
@@ -133,7 +103,6 @@ async function loadRecipe() {
             <span>🔥 ${recipe.calories} cal</span>
         `;
 
-        // Build ingredients HTML (with sections)
         let ingredientsHtml = '';
         if (recipe.ingredients && recipe.ingredients.length > 0) {
             recipe.ingredients.forEach(section => {
@@ -152,7 +121,6 @@ async function loadRecipe() {
         }
         document.getElementById('ingredients').innerHTML = ingredientsHtml;
 
-        // Instructions (convert newlines to <br> for display)
         const instructionsText = recipe.instructions || 'No instructions provided.';
         document.getElementById('instructions').innerHTML = `<div class="instructions">${instructionsText.replace(/\n/g, '<br>')}</div>`;
 
@@ -161,7 +129,62 @@ async function loadRecipe() {
     }
 }
 
-// ==================== PAGE DETECTION ====================
+// ==================== FOOTER SUPPORT ITEMS ====================
+function setupSupportItems() {
+    const contact = document.getElementById('contact');
+    if (contact) {
+        contact.addEventListener('click', () => {
+            window.location.href = 'mailto:support@cookbook.com?subject=Hello';
+        });
+    }
+
+    const rate = document.getElementById('rate');
+    if (rate) {
+        rate.addEventListener('click', () => {
+            window.open('https://play.google.com/store/apps/details?id=com.example', '_blank');
+        });
+    }
+
+    const share = document.getElementById('share');
+    if (share) {
+        share.addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Cookbook Recipes',
+                    text: 'Check out this awesome cookbook app!',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                prompt('Copy this link to share:', window.location.href);
+            }
+        });
+    }
+
+    const more = document.getElementById('more');
+    if (more) {
+        more.addEventListener('click', () => {
+            window.open('https://play.google.com/store/apps/developer?id=YourName', '_blank');
+        });
+    }
+
+    const privacy = document.getElementById('privacy');
+    if (privacy) {
+        privacy.addEventListener('click', () => {
+            window.open('privacy.html', '_blank');
+        });
+    }
+
+    const exit = document.getElementById('exit');
+    if (exit) {
+        exit.addEventListener('click', () => {
+            if (confirm('Exit app?')) {
+                alert('Thanks for using Cookbook!');
+            }
+        });
+    }
+}
+
+// ==================== RUN APPROPRIATE FUNCTION ====================
 if (window.location.pathname.includes('recipe.html')) {
     loadRecipe();
 } else if (window.location.pathname.includes('category.html')) {
@@ -169,3 +192,6 @@ if (window.location.pathname.includes('recipe.html')) {
 } else {
     loadCategories();
 }
+
+// Also set up support items on every page
+setupSupportItems();
