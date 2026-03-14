@@ -10,14 +10,50 @@
           "name": "10 Minute Chicken Pad Thai",
           "time": "25 Min",
           "servings": 4,
-          "calories": 415
+          "calories": 415,
+          "ingredients": [
+            {
+              "section": "Sauce",
+              "items": [
+                "2 tablespoons fish sauce",
+                "2 tablespoons lime juice (from 1 lime)",
+                "1 tablespoon brown sugar",
+                "1 tablespoon soy sauce"
+              ]
+            },
+            {
+              "section": "Stir-fry",
+              "items": [
+                "200g rice noodles",
+                "2 chicken breasts, sliced",
+                "2 eggs, lightly beaten",
+                "1 cup bean sprouts",
+                "2 green onions, chopped",
+                "¼ cup peanuts, crushed"
+              ]
+            }
+          ],
+          "instructions": "1. Cook noodles according to package directions. Drain and set aside.\n2. In a small bowl, mix fish sauce, lime juice, brown sugar, and soy sauce.\n3. Heat oil in a wok or large pan. Add chicken and stir-fry until cooked through.\n4. Push chicken to one side, add eggs and scramble.\n5. Add noodles and sauce mixture, toss everything together.\n6. Remove from heat, stir in bean sprouts and green onions.\n7. Serve topped with crushed peanuts."
         },
         {
           "id": "air-fryer",
           "name": "Air Fryer Chicken Breast",
           "time": "20 Min",
           "servings": 2,
-          "calories": 320
+          "calories": 320,
+          "ingredients": [
+            {
+              "section": "Main",
+              "items": [
+                "2 boneless skinless chicken breasts",
+                "1 tbsp olive oil",
+                "1 tsp paprika",
+                "½ tsp garlic powder",
+                "Salt and pepper to taste"
+              ]
+            }
+          ],
+          "instructions": "1. Preheat air fryer to 375°F (190°C).\n2. Rub chicken breasts with olive oil and all spices.\n3. Place in air fryer basket in a single layer.\n4. Cook for 12-15 minutes, flipping halfway, until internal temperature reaches 165°F (74°C).\n5. Let rest 5 minutes before serving."
         }
       ]
     },
