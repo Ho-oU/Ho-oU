@@ -1,32 +1,29 @@
-/* Category grid styles */
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+/* Recipe list styles (for category.html) */
+.recipe-list {
     padding: 20px;
 }
 
-.category-card {
+.recipe-item {
     background: white;
     border-radius: 8px;
-    padding: 20px;
-    text-align: center;
+    padding: 15px;
+    margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: background 0.2s;
 }
 
-.category-card:hover {
-    transform: scale(1.02);
+.recipe-item:hover {
+    background: #f9f9f9;
 }
 
-.category-card h3 {
+.recipe-item h3 {
     margin: 0 0 5px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
-.category-card p {
+.recipe-item p {
     margin: 0;
     color: #666;
-    font-weight: bold;
+    font-size: 0.9rem;
 }
