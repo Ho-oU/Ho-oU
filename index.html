@@ -7,32 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with title and support button -->
     <header>
         <h1>Cookbook Recipes</h1>
-        <button id="supportBtn" class="support-button">Support Us ☰</button>
     </header>
 
-    <!-- Main content: category grid -->
     <main>
+        <h2>Support Us</h2>
         <div id="category-grid" class="category-grid"></div>
     </main>
 
-    <!-- The sliding panel (hidden by default) -->
-    <div id="supportPanel" class="support-panel">
-        <button id="closePanel" class="close-btn">✖</button>
+    <footer>
         <ul class="support-list">
-            <li>Contact Us</li>
-            <li>★ Rate Us</li>
-            <li>▼ Share App</li>
-            <li>● More Apps</li>
-            <li>★ Privacy Policy</li>
-            <li>Exit</li>
+            <li id="contact">Contact Us</li>
+            <li id="rate">★ Rate Us</li>
+            <li id="share">▼ Share App</li>
+            <li id="more">● More Apps</li>
+            <li id="privacy">★ Privacy Policy</li>
+            <li id="exit">Exit</li>
         </ul>
-    </div>
-
-    <!-- Overlay (dark background when panel is open) -->
-    <div id="overlay" class="overlay"></div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
